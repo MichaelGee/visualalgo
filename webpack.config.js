@@ -51,6 +51,9 @@ const serverConfig = {
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({
+            "process.env": JSON.stringify({ 'NODE_ENV': 'dev' })
+        }),
     ],
 
     output: {
@@ -121,7 +124,10 @@ const clientConfig = {
         new CleanWebpackPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({
+            "process.env": JSON.stringify({ 'NODE_ENV': 'dev' })
+        }),
     ],
 
     resolve: {
