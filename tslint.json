@@ -3,16 +3,22 @@
         "tslint:latest",
         "tslint-react"
     ],
+    "linterOptions": {
+        "exclude": [
+            "node_modules/**",
+            "@babel/runtime/**"
+        ]
+    },
     "rules": {
         "max-classes-per-file": {
             "options": [1]
         },
+        "interface-name": false,
         "quotemark": [true, "single", "jsx-double"],
         "no-default-export": false,
-        "no-submodule-imports": {
-            "options": ["tsutils"]
-        },
         "no-implicit-dependencies": false,
+        "no-submodule-imports": false,
+        "no-var-requires": false,
         "restrict-plus-operands": true,
         "strict-boolean-expressions": true
     }
