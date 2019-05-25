@@ -1,6 +1,8 @@
-import mainRouter from '@app/server/routers/main';
-import * as bodyParser from "body-parser";
-import * as morgan from "morgan";
+import apiRouter from '@app/server/routers/api';
+import homeRouter from '@app/server/routers/home';
+
+import * as bodyParser from 'body-parser';
+import * as morgan from 'morgan';
 import * as path from 'path';
 import * as webpack from 'webpack';
 import * as webpackDevMiddleware from 'webpack-dev-middleware';
@@ -26,10 +28,10 @@ app.use(
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-console.log(path.join(__dirname, '/static'));
-
 app.use('/static', express.static(path.join(__dirname, '/static')));
 
-app.use(mainRouter);
+app.use(homeRouter);
+
+app.use(apiRouter);
 
 export default app;
