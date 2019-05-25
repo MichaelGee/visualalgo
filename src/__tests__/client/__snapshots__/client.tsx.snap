@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Client Side Render 1`] = `
+<DocumentFragment>
+  <h1>
+    Sieve of Eratosthenes Demo
+  </h1>
+</DocumentFragment>
+`;
