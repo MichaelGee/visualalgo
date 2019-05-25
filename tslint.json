@@ -1,0 +1,19 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-react"
+    ],
+    "rules": {
+        "max-classes-per-file": {
+            "options": [1]
+        },
+        "quotemark": [true, "single", "jsx-double"],
+        "no-default-export": false,
+        "no-submodule-imports": {
+            "options": ["tsutils"]
+        },
+        "no-implicit-dependencies": false,
+        "restrict-plus-operands": true,
+        "strict-boolean-expressions": true
+    }
+}
