@@ -1,6 +1,6 @@
-![Screenshot](/screenshot.png?raw=true "Screenshot")
-
 # Sieve Of Eratosthenes
+
+![Screenshot](/screenshot.png?raw=true "Screenshot")
 
 ## Docker
 
