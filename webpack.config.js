@@ -5,6 +5,9 @@ const StartServerPlugin = require("start-server-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ReactJssHmrPlugin = require('react-jss-hmr/webpack')
 
+const envs = {
+    NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+}
 
 const serverConfig = {
     entry: [path.resolve( __dirname, 'src/index.ts')],
@@ -56,7 +59,7 @@ const serverConfig = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
-            "process.env": JSON.stringify({ 'NODE_ENV': 'dev' })
+            "process.env": envs
         }),
     ],
 
@@ -66,7 +69,7 @@ const serverConfig = {
     },
 
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [
             path.resolve( __dirname, 'src'),
             'node_modules'
@@ -81,10 +84,10 @@ const serverConfig = {
 };
 
 const clientConfig = {
-    entry: [
+    entry: process.env.NODE_ENV === 'development' ? [
         "webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr",
         "./src/client/index.tsx"
-    ],
+    ] : ["./src/client/index.tsx"],
     watch: true,
     mode: "development",
     target: "web",
@@ -133,12 +136,12 @@ const clientConfig = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
-            "process.env": JSON.stringify({ 'NODE_ENV': 'dev' })
+            "process.env": envs
         }),
     ],
 
     resolve: {
-        extensions: ['.ts', '.js', '.tsx', '.jsx', '.css'],
+        extensions: ['.ts', '.js', '.tsx', '.jsx'],
         modules: [
             path.resolve( __dirname, 'src'),
             'node_modules'

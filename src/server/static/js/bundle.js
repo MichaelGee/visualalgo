@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "2ddea2623675daf0b1b3";
+/******/ 	var hotCurrentHash = "479d07c34b30ee159e87";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -44705,7 +44705,7 @@ var styles = {
     width: '50px',
     margin: '5px',
     display: 'flex',
-    fontSize: '1.3em',
+    fontSize: '1.5em',
     justifyContent: 'center',
     alignItems: 'center',
     color: '#fff',

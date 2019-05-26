@@ -10,7 +10,7 @@ const styles = {
         width: '50px',
         margin: '5px',
         display: 'flex',
-        fontSize: '1.3em',
+        fontSize: '1.5em',
         justifyContent: 'center',
         alignItems: 'center',
         color: '#fff',
