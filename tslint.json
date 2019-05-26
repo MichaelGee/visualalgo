@@ -13,7 +13,11 @@
         "max-classes-per-file": {
             "options": [1]
         },
+        "max-line-length": false,
         "interface-name": false,
+        "jsx-no-multiline-js": false,
+        "object-literal-key-quotes": false,
+        "object-literal-sort-keys": false,
         "quotemark": [true, "single", "jsx-double"],
         "no-default-export": false,
         "no-implicit-dependencies": false,

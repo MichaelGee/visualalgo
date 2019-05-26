@@ -19,6 +19,7 @@
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.8",
     "react-jss": "^8.6.1",
+    "ts-debounce": "^1.0.0",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-hot-middleware": "^2.25.0"
   },

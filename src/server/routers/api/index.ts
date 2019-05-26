@@ -42,7 +42,7 @@ apiRouter.get('/prime/:limit/median', (req, res) => {
     const { limit } = req.params;
     const primes = getPrimes(Number(limit));
     const median = getMedian(primes);
-    res.json({ median });
+    res.json({ median, primes });
 });
 
 export default apiRouter;

@@ -5,12 +5,7 @@ import * as ReactDOM from 'react-dom';
 import {JssProvider} from 'react-jss';
 
 const render = (Component) => {
-    ReactDOM.hydrate(
-        (
-        <JssProvider>
-            <Component />
-        </JssProvider>
-    ), document.getElementById('app'));
+    ReactDOM.hydrate(<Component />, document.getElementById('app'));
 };
 
 if (module.hot) {
