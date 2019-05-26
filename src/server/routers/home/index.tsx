@@ -13,6 +13,15 @@ const Html = (body: string) => `
     <html>
         <head>
             <title>Sieve of Eratosthenes</title>
+            <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+            <style type="text/css">
+                body {
+                    padding: 0px;
+                    margin: 0px;
+                    fontSize: 16px;
+                    font-family: 'Raleway', sans-serif;
+                }
+            </style>
             <style type="text/css" id="server-side-styles">
                 ${sheets.toString()}
             </style>

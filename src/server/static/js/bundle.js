@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "a84c24a1f50fd4a6ba5a";
+/******/ 	var hotCurrentHash = "2ddea2623675daf0b1b3";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -44390,6 +44390,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js");
 /* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_hot_loader__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-jss */ "./node_modules/react-jss-hmr/lib/index.js");
+/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_jss__WEBPACK_IMPORTED_MODULE_12__);
 
 
 
@@ -44436,6 +44438,64 @@ var __awaiter = undefined && undefined.__awaiter || function (thisArg, _argument
 
 
 
+
+var styles = {
+  container: {
+    width: '80%',
+    padding: '20px',
+    maxWidth: '630px'
+  },
+  controlContainer: {
+    padding: '10px 0px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: '30px 0px',
+    borderTop: '1px solid rgba(0,0,0, 0.2);',
+    borderBottom: '1px solid rgba(0,0,0, 0.2);'
+  },
+  numberInput: {
+    width: '300px',
+    height: '38px',
+    paddingLeft: '10px',
+    borderRadius: '10px',
+    fontSize: '1.2em',
+    border: '2px solid #f1f1f1;'
+  },
+  primeTag: {
+    width: '80px',
+    height: '25px',
+    backgroundColor: '#54a0ff',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#fff',
+    fontSize: '0.8em',
+    fontWeight: 'bold',
+    borderRadius: '15px'
+  },
+  medianTag: {
+    width: '80px',
+    height: '25px',
+    backgroundColor: '#10ac84',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#fff',
+    fontSize: '0.8em',
+    fontWeight: 'bold',
+    borderRadius: '15px'
+  },
+  numberInputLabel: {
+    fontSize: '0.8em',
+    display: 'block'
+  },
+  numbersDisplay: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '10px 0px'
+  }
+};
 
 var App =
 /*#__PURE__*/
@@ -44495,23 +44555,25 @@ function (_React$Component) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 limitNumber = Number(e.currentTarget.value);
-
-                if (!(limitNumber < 3)) {
-                  _context2.next = 3;
-                  break;
-                }
-
-                return _context2.abrupt("return", this.setState({
-                  limitNumber: limitNumber
-                }));
-
-              case 3:
                 grids = [];
 
                 for (i = 0; i < limitNumber; i++) {
                   grids.push(i + 1);
                 }
 
+                if (!(limitNumber < 3)) {
+                  _context2.next = 5;
+                  break;
+                }
+
+                return _context2.abrupt("return", this.setState({
+                  limitNumber: limitNumber,
+                  grids: [],
+                  primes: [],
+                  medians: []
+                }));
+
+              case 5:
                 _context2.next = 7;
                 return this.fetchPrimeAndMedian(limitNumber);
 
@@ -44547,16 +44609,33 @@ function (_React$Component) {
           limitNumber = _this$state.limitNumber,
           medians = _this$state.medians,
           primes = _this$state.primes;
-      return react__WEBPACK_IMPORTED_MODULE_10__["createElement"](react__WEBPACK_IMPORTED_MODULE_10__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("h1", null, "Sieve of Eratosthenes"), react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("form", null, react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("input", {
+      var classes = this.props.classes;
+      return react__WEBPACK_IMPORTED_MODULE_10__["createElement"](react__WEBPACK_IMPORTED_MODULE_10__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("div", {
+        className: classes.container
+      }, react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("h2", null, "Sieve of Eratosthenes"), react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("p", null, "In mathematics, the Sieve of Eratosthenes is a simple, ancient algorithm for ", react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("br", null), " finding all prime numbers up to any given limit."), react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("div", {
+        className: classes.controlContainer
+      }, react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("form", null, react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("label", {
+        htmlFor: "limitNumber",
+        className: classes.numberInputLabel
+      }, "Enter a number"), react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("br", null), react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("input", {
         type: "number",
+        id: "limitNumber",
         name: "limitNumber",
         value: limitNumber,
+        min: 0,
+        className: classes.numberInput,
         onChange: this.handleNumberChange
-      })), react__WEBPACK_IMPORTED_MODULE_10__["createElement"](_app_client_containers_grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("div", {
+        className: classes.primeTag
+      }, "Prime"), react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("div", {
+        className: classes.medianTag
+      }, "Median")), react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("div", {
+        className: classes.numbersDisplay
+      }, react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("pre", null, "Primes: ", JSON.stringify(primes)), react__WEBPACK_IMPORTED_MODULE_10__["createElement"]("pre", null, "Medians: ", JSON.stringify(medians))), react__WEBPACK_IMPORTED_MODULE_10__["createElement"](_app_client_containers_grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
         grids: grids,
         medians: medians,
         primes: primes
-      }));
+      })));
     }
   }, {
     key: "__reactstandin__regenerateByEval",
@@ -44570,7 +44649,7 @@ function (_React$Component) {
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_10__["Component"]);
 
-var _default = Object(react_hot_loader__WEBPACK_IMPORTED_MODULE_11__["hot"])(module)(App);
+var _default = Object(react_hot_loader__WEBPACK_IMPORTED_MODULE_11__["hot"])(module)(react_jss__WEBPACK_IMPORTED_MODULE_12___default()(styles)(App));
 
 /* harmony default export */ __webpack_exports__["default"] = (_default);
 ;
@@ -44583,6 +44662,7 @@ var _default = Object(react_hot_loader__WEBPACK_IMPORTED_MODULE_11__["hot"])(mod
   }
 
   reactHotLoader.register(__awaiter, "__awaiter", "/Users/Sleekvick/Projects/touch_bistro_challenge/src/client/app.tsx");
+  reactHotLoader.register(styles, "styles", "/Users/Sleekvick/Projects/touch_bistro_challenge/src/client/app.tsx");
   reactHotLoader.register(App, "App", "/Users/Sleekvick/Projects/touch_bistro_challenge/src/client/app.tsx");
   reactHotLoader.register(_default, "default", "/Users/Sleekvick/Projects/touch_bistro_challenge/src/client/app.tsx");
 })();
@@ -44608,10 +44688,8 @@ var _default = Object(react_hot_loader__WEBPACK_IMPORTED_MODULE_11__["hot"])(mod
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js");
-/* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_hot_loader__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-jss */ "./node_modules/react-jss-hmr/lib/index.js");
-/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-jss */ "./node_modules/react-jss-hmr/lib/index.js");
+/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jss__WEBPACK_IMPORTED_MODULE_1__);
 (function () {
   var enterModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js")).enterModule;
   enterModule && enterModule(module);
@@ -44619,22 +44697,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var styles = {
   gridItem: {
     border: '2px solid #576574',
+    backgroundColor: '#8395a7',
     height: '50px',
     width: '50px',
     margin: '5px',
     display: 'flex',
+    fontSize: '1.3em',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    color: '#fff',
+    transition: 'all 1s'
   },
   gridItemPrime: {
-    border: '2px solid #54a0ff'
+    border: '2px solid #2e86de',
+    backgroundColor: '#54a0ff',
+    boxShadow: '0px 0px 15px rgba(84,160,255, 0.5)'
   },
   gridItemMedian: {
-    border: '2px solid #10ac84'
+    border: '2px solid #10ac84',
+    backgroundColor: '#1dd1a1',
+    borderRadius: '25px',
+    boxShadow: '0px 0px 25px rgba(29,209,161, 0.5)'
   }
 };
 
@@ -44648,7 +44734,7 @@ var GridItem = function GridItem(_ref) {
   }, children);
 };
 
-var _default = Object(react_hot_loader__WEBPACK_IMPORTED_MODULE_1__["hot"])(module)(react_jss__WEBPACK_IMPORTED_MODULE_2___default()(styles)(GridItem));
+var _default = react_jss__WEBPACK_IMPORTED_MODULE_1___default()(styles)(GridItem);
 
 /* harmony default export */ __webpack_exports__["default"] = (_default);
 ;
@@ -44692,10 +44778,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_client_components_GridItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @app/client/components/GridItem */ "./src/client/components/GridItem/index.tsx");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js");
-/* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_hot_loader__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-jss */ "./node_modules/react-jss-hmr/lib/index.js");
-/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_jss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-jss */ "./node_modules/react-jss-hmr/lib/index.js");
+/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jss__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -44710,11 +44794,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var styles = {
   grids: {
     display: 'flex',
-    width: '300px',
+    width: '630px',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     lineHeight: '30px',
@@ -44764,7 +44847,7 @@ function (_React$PureComponent) {
   return Grid;
 }(react__WEBPACK_IMPORTED_MODULE_6__["PureComponent"]);
 
-var _default = Object(react_hot_loader__WEBPACK_IMPORTED_MODULE_7__["hot"])(module)(react_jss__WEBPACK_IMPORTED_MODULE_8___default()(styles)(Grid));
+var _default = react_jss__WEBPACK_IMPORTED_MODULE_7___default()(styles)(Grid);
 
 /* harmony default export */ __webpack_exports__["default"] = (_default);
 ;

@@ -2,11 +2,61 @@
 
 exports[`Client Side Render 1`] = `
 <DocumentFragment>
-  <h1>
-    Sieve of Eratosthenes Demo
-  </h1>
   <div
-    class="GridItem-gridItem-0-1-1"
-  />
+    class="App-container-0-1-1"
+  >
+    <h2>
+      Sieve of Eratosthenes
+    </h2>
+    <p>
+      In mathematics, the Sieve of Eratosthenes is a simple, ancient algorithm for 
+      <br />
+       finding all prime numbers up to any given limit.
+    </p>
+    <div
+      class="App-controlContainer-0-1-2"
+    >
+      <form>
+        <label
+          class="App-numberInputLabel-0-1-6"
+          for="limitNumber"
+        >
+          Enter a number
+        </label>
+        <br />
+        <input
+          class="App-numberInput-0-1-3"
+          id="limitNumber"
+          min="0"
+          name="limitNumber"
+          type="number"
+          value="0"
+        />
+      </form>
+      <div
+        class="App-primeTag-0-1-4"
+      >
+        Prime
+      </div>
+      <div
+        class="App-medianTag-0-1-5"
+      >
+        Median
+      </div>
+    </div>
+    <div
+      class="App-numbersDisplay-0-1-7"
+    >
+      <pre>
+        Primes: []
+      </pre>
+      <pre>
+        Medians: []
+      </pre>
+    </div>
+    <div
+      class="Grid-grids-0-1-8"
+    />
+  </div>
 </DocumentFragment>
 `;

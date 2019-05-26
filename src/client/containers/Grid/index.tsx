@@ -6,7 +6,7 @@ import withStyles, { WithStyles } from 'react-jss';
 const styles = {
     grids: {
         display: 'flex',
-        width: '300px',
+        width: '630px',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         lineHeight: '30px',
@@ -45,4 +45,4 @@ class Grid extends React.PureComponent<Props> {
     }
 }
 
-export default hot(module)(withStyles(styles)(Grid)) as React.ComponentType<IProps>;
+export default withStyles(styles)(Grid) as React.ComponentType<IProps>;

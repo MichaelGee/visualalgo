@@ -15,7 +15,8 @@
     },
     "transform": {
         "^.+\\.css$": "jest-transform-css",
-        "^.+\\.(ts|tsx)$": "babel-jest"
+        "^.+\\.(ts|tsx)$": "babel-jest",
+        "^.+\\.(ts|tsx)$": "ts-jest"
     },
     "testMatch": [
         "**/__tests__/*.(ts|tsx|js)"
