@@ -1,5 +1,7 @@
 ![Screenshot](/screenshot.png?raw=true "Screenshot")
 
+# Sieve Of Eratosthenes
+
 ## Docker
 
 `docker build . --tag="sieve:latest"`
