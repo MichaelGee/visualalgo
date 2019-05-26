@@ -1,6 +1,5 @@
 import GridItem from '@app/client/components/GridItem';
 import * as React from 'react';
-import { hot } from 'react-hot-loader';
 import withStyles, { WithStyles } from 'react-jss';
 
 const styles = {

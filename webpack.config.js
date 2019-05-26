@@ -9,9 +9,25 @@ const envs = {
     NODE_ENV: JSON.stringify(process.env.NODE_ENV)
 }
 
+const serverPlugins = [
+    new CleanWebpackPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.DefinePlugin({
+        "process.env": envs
+    }),   
+];
+
+const clientPlugins = serverPlugins.concat(new webpack.optimize.OccurrenceOrderPlugin());
+
+if (process.env.NODE_ENV === 'development') {
+    serverPlugins.push(new StartServerPlugin("server.js"));
+}
+
 const serverConfig = {
     entry: [path.resolve( __dirname, 'src/index.ts')],
-    watch: true,
+    watch: process.env.NODE_ENV === 'development',
     mode: "development",
     devtool: "sourcemap",
     target: "node",
@@ -52,16 +68,7 @@ const serverConfig = {
         ],
     },
     
-    plugins: [
-        new CleanWebpackPlugin(),
-        new StartServerPlugin("server.js"),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.DefinePlugin({
-            "process.env": envs
-        }),
-    ],
+    plugins: serverPlugins,
 
     output: {
         filename: 'server.js',
@@ -88,7 +95,7 @@ const clientConfig = {
         "webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr",
         "./src/client/index.tsx"
     ] : ["./src/client/index.tsx"],
-    watch: true,
+    watch: process.env.NODE_ENV === 'development',
     mode: "development",
     target: "web",
     devtool: "sourcemap",
@@ -127,18 +134,10 @@ const clientConfig = {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
             }
-        ]
+        ],
     },
 
-    plugins: [
-        new CleanWebpackPlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.DefinePlugin({
-            "process.env": envs
-        }),
-    ],
+    plugins: clientPlugins,
 
     resolve: {
         extensions: ['.ts', '.js', '.tsx', '.jsx'],

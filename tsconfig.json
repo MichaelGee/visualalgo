@@ -10,7 +10,7 @@
         "allowSyntheticDefaultImports": true,
         "jsx": "react",
         "paths": {
-            "@app/*": ["./src/*"]
+            "@app/*": ["src/*"]
         }
     },
     "include": [
