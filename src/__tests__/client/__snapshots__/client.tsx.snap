@@ -5,5 +5,8 @@ exports[`Client Side Render 1`] = `
   <h1>
     Sieve of Eratosthenes Demo
   </h1>
+  <div
+    class="GridItem-gridItem-0-1-1"
+  />
 </DocumentFragment>
 `;

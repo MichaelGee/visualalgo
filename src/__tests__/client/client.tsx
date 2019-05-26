@@ -8,3 +8,7 @@ test('Client Side Render', () => {
     const { asFragment } = render(<App />);
     expect(asFragment()).toMatchSnapshot();
 });
+
+test('Makes request when button is clicked', () => {
+    
+});

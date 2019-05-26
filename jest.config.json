@@ -1,5 +1,4 @@
 {
-    "testEnvironment": "node",
     "moduleFileExtensions": [
         "ts",
         "tsx",
@@ -10,13 +9,17 @@
         "node_modules"
     ],
     "moduleNameMapper": {
-        "^@app(.*)$": "<rootDir>/src$1"
+        "^@app(.*)$": "<rootDir>/src$1",
+        "\\.(css)$": "identity-obj-proxy"
+
     },
     "transform": {
+        "^.+\\.css$": "jest-transform-css",
         "^.+\\.(ts|tsx)$": "babel-jest"
     },
     "testMatch": [
         "**/__tests__/*.(ts|tsx|js)"
     ],
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "transformIgnorePatterns": ["<rootDir>/node_modules/"]
 }

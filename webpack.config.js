@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const nodeExternals = require("webpack-node-externals");
 const StartServerPlugin = require("start-server-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const ReactJssHmrPlugin = require('react-jss-hmr/webpack')
+
 
 const serverConfig = {
     entry: [path.resolve( __dirname, 'src/index.ts')],
@@ -42,11 +44,13 @@ const serverConfig = {
                     }
                 ],
                 exclude: /node_modules/
-            }
+            },
+            { test: /\.css$/, loader: 'ignore-loader' }
         ],
     },
     
     plugins: [
+        new CleanWebpackPlugin(),
         new StartServerPlugin("server.js"),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
@@ -62,14 +66,17 @@ const serverConfig = {
     },
 
     resolve: {
-        extensions: ['.ts', '.tsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
         modules: [
             path.resolve( __dirname, 'src'),
             'node_modules'
         ],
         alias: {
             '@app': path.resolve(__dirname, 'src')
-        }
+        },
+        plugins: [
+            new ReactJssHmrPlugin(),
+        ]
     },
 };
 
@@ -131,14 +138,17 @@ const clientConfig = {
     ],
 
     resolve: {
-        extensions: ['.ts', '.js', '.tsx', '.jsx'],
+        extensions: ['.ts', '.js', '.tsx', '.jsx', '.css'],
         modules: [
             path.resolve( __dirname, 'src'),
             'node_modules'
         ],
         alias: {
             '@app': path.resolve(__dirname, 'src')
-        }
+        },
+        plugins: [
+            new ReactJssHmrPlugin(),
+        ]
     },
 
     output: {

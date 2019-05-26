@@ -2,9 +2,15 @@ import App from './app';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import {JssProvider} from 'react-jss';
 
 const render = (Component) => {
-    ReactDOM.hydrate(<Component />, document.getElementById('app'));
+    ReactDOM.hydrate(
+        (
+        <JssProvider>
+            <Component />
+        </JssProvider>
+    ), document.getElementById('app'));
 };
 
 if (module.hot) {
@@ -14,5 +20,9 @@ if (module.hot) {
 }
 
 if (window) {
-    window.onload = () => render(App);
+    window.onload = () => {
+        const ssStyles = document.getElementById('server-side-styles');
+        ssStyles.parentNode.removeChild(ssStyles);
+        render(App);
+    };
 }
