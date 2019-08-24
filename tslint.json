@@ -23,6 +23,7 @@
         "no-submodule-imports": false,
         "no-var-requires": false,
         "restrict-plus-operands": true,
-        "strict-boolean-expressions": true
+        "strict-boolean-expressions": true,
+        "no-console": false
     }
 }
