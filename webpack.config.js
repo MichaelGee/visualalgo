@@ -144,11 +144,11 @@ const clientConfig = {
     resolve: {
         extensions: ['.ts', '.js', '.tsx', '.jsx'],
         modules: [
-            path.join( __dirname, 'src'),
+            path.resolve( __dirname, 'src'),
             'node_modules'
         ],
         alias: {
-            '@app': path.join(__dirname, 'src')
+            '@app': path.resolve(__dirname, 'src')
         },
         plugins: [
             new ReactJssHmrPlugin(),
@@ -156,10 +156,10 @@ const clientConfig = {
     },
 
     output: {
-        publicPath: path.join(__dirname, "src/client/"),
-        path: path.join(__dirname, "src/server/static/js"),
+        publicPath: path.resolve(__dirname, "/src/client"),
+        path: path.resolve(__dirname, "/src/server/static/js"),
         filename: "bundle.js"
     }
-}
+};
 
 module.exports = [serverConfig, clientConfig];
