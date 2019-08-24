@@ -1,9 +1,8 @@
-import Grid from '@app/client/containers/grid';
+import Grid from '@app/client/containers/Grid';
 import Axios from 'axios';
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
 import withStyles, { WithStyles } from 'react-jss';
-import { debounce } from 'ts-debounce';
 
 interface IState {
     limitNumber: number;

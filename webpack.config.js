@@ -25,6 +25,8 @@ if (process.env.NODE_ENV === 'development') {
     serverPlugins.push(new StartServerPlugin("server.js"));
 }
 
+console.log(path.resolve(__dirname, 'src'));
+
 const serverConfig = {
     entry: [path.resolve( __dirname, 'src/index.ts')],
     watch: process.env.NODE_ENV === 'development',
@@ -142,11 +144,11 @@ const clientConfig = {
     resolve: {
         extensions: ['.ts', '.js', '.tsx', '.jsx'],
         modules: [
-            path.resolve( __dirname, 'src'),
+            path.join( __dirname, 'src'),
             'node_modules'
         ],
         alias: {
-            '@app': path.resolve(__dirname, 'src')
+            '@app': path.join(__dirname, 'src')
         },
         plugins: [
             new ReactJssHmrPlugin(),
@@ -154,8 +156,8 @@ const clientConfig = {
     },
 
     output: {
-        publicPath: path.resolve(__dirname, "src/client/"),
-        path: path.resolve(__dirname, "src/server/static/js"),
+        publicPath: path.join(__dirname, "src/client/"),
+        path: path.join(__dirname, "src/server/static/js"),
         filename: "bundle.js"
     }
 }

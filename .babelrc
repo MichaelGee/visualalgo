@@ -14,8 +14,8 @@
         ["module-resolver", {
             "root": ["./src"],
             "alias": {
-                "@app": "./src",
-            },
+                "@app": "./src"
+            }
         }]
     ]
 }

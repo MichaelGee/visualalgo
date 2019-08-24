@@ -10,8 +10,11 @@ RUN npm install
 
 # Bundle app source
 COPY src /usr/src/sieve/src
+RUN ls /usr/src/sieve/src -1
+RUN ls /usr/src/sieve/src/client -1
 COPY webpack.config.js /usr/src/sieve/
 COPY tsconfig.json /usr/src/sieve/
+COPY .babelrc /usr/src/sieve/
 
 RUN npm run build
 
