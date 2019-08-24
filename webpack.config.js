@@ -25,8 +25,6 @@ if (process.env.NODE_ENV === 'development') {
     serverPlugins.push(new StartServerPlugin("server.js"));
 }
 
-console.log(path.resolve(__dirname, 'src'));
-
 const serverConfig = {
     entry: [path.resolve( __dirname, 'src/index.ts')],
     watch: process.env.NODE_ENV === 'development',
@@ -156,8 +154,8 @@ const clientConfig = {
     },
 
     output: {
-        publicPath: path.resolve(__dirname, "/src/client"),
-        path: path.resolve(__dirname, "/src/server/static/js"),
+        publicPath: path.resolve(__dirname, "src/client/"),
+        path: path.join(__dirname, "/src/server/static/js/"),
         filename: "bundle.js"
     }
 };
