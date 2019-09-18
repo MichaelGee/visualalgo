@@ -32,7 +32,7 @@ const getMedian = (arr: number[]): number[] => {
     }
 };
 
-function getMaximumSubArr(arr) {
+function getMaximumSubArr(arr: number[]) {
     let globalMax = arr[0];
     let localMax = arr[0];
 

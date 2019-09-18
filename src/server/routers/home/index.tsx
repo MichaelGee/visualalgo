@@ -12,7 +12,7 @@ const Html = (body: string) => `
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Sieve of Eratosthenes</title>
+            <title>Visual Algorithms</title>
             <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
             <style type="text/css">
                 body {
