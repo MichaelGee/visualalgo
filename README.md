@@ -1,4 +1,7 @@
 # Visualization Of Algorithms
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/victorlenerd/visualalgo.svg)](https://greenkeeper.io/)
+
 ![Screenshot](/screenshot.png?raw=true "Screenshot")
 
 ## Docker
